@@ -93,26 +93,11 @@ const getClientsByStatus = async (req, res) => {
     }
 };
 
-// GET - Obtener clientes más frecuentes (por total de compras)
-const getTopClients = async (req, res) => {
-    try {
-        const limit = parseInt(req.query.limit) || 10;
-        const clientes = await modeloClient.find()
-            .sort({ totalCompras: -1 })
-            .limit(limit);
-        res.json(clientes);
-    } catch (err) {
-        console.error("Error al obtener clientes más frecuentes:", err);
-        res.status(500).json({ 'mensaje': "Error al obtener clientes más frecuentes", error: err.message });
-    }
-};
-
 module.exports = {
     getAllClients,
     getClientByDocument,
     createClient,
     updateClient,
     deleteClient,
-    getClientsByStatus,
-    getTopClients
+    getClientsByStatus
 };

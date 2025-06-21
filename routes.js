@@ -21,7 +21,6 @@ router.delete('/product/:ref', productController.deleteProduct);
 
 // ===== RUTAS DE CLIENTES (Compradores) =====
 router.get('/client', clientController.getAllClients);
-router.get('/client/top', clientController.getTopClients);
 router.get('/client/status/:estado', clientController.getClientsByStatus);
 router.get('/client/:documento', clientController.getClientByDocument);
 router.post('/client', clientController.createClient);
