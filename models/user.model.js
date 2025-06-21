@@ -23,10 +23,31 @@ const schemaUser = new mongoose.Schema({
         unique: true,
         match: [/^\S+@\S+\.\S+$/, 'El correo debe ser válido']
     },
+    password: {
+        type: String,
+        required: true,
+        minlength: [6, 'La contraseña debe tener al menos 6 caracteres']
+    },
+    rol: {
+        type: String,
+        enum: ['vendedor', 'administrador', 'gerente'],
+        default: 'vendedor'
+    },
+    telefono: {
+        type: String,
+        required: true
+    },
+    activo: {
+        type: Boolean,
+        default: true
+    },
+    fechaCreacion: {
+        type: Date,
+        default: Date.now
+    }
 }, {
     versionKey: false
 });
-
 
 const users = mongoose.model('users', schemaUser);
 module.exports = users;
